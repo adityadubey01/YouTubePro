@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { YOUTUBE_VIDEOS_API } from "./utils/config";
 import VideoCard from "./VideoCard";
-import React, { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "./utils/config";
-import VideoCard from "./VideoCard";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
