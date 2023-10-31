@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "./utils/appSlice";
+import { YOUTUBE_SEARCH_API } from "../components/utils/config";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchSuggestion, setSearchSuggestion] = useState([]);
+  const [showSuggestion, setShowSuggestion] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      fetchSuggestions();
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
+  const fetchSuggestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const jsonData = await data.json();
+    setSearchSuggestion(jsonData[1]);
+  };
+
   const dispatch = useDispatch();
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -26,13 +47,41 @@ const Header = () => {
         />
       </div>
       <div className="col-span-10 px-10 ml-28">
-        <input
-          className="w-1/2 mt-2 p-2 border border-gray-400 rounded-l-full"
-          type="text"
-        />
-        <button className="p-2 mt-2 border border-gray-400 rounded-r-full bg-gray-100">
-          Search
-        </button>
+        <div>
+          <input
+            className="w-1/2 mt-2 px-4 py-2 border border-gray-400 rounded-l-full"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+            }}
+            onFocus={() => {
+              setShowSuggestion(true);
+            }}
+            onBlur={() => {
+              setShowSuggestion(false);
+            }}
+          />
+          <button className="p-2 mt-2 border border-gray-400 rounded-r-full bg-gray-100">
+            Search
+          </button>
+        </div>
+        {showSuggestion && (
+          <div className="absolute py-2 px-5 bg-white w-[35rem] shadow-lg rounded-lg border border-gray-200">
+            <ul>
+              {searchSuggestion.map((currSearch) => {
+                return (
+                  <li
+                    className="py-2 shadow-sm hover:bg-gray-200"
+                    key={currSearch}
+                  >
+                    💨 {currSearch}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </div>
       <div className="grid grid-flow-col col-span-1">
         <img
