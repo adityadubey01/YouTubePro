@@ -1,9 +1,9 @@
 import React from "react";
 
 export const CommentsList = ({ comments }) => {
-  return comments.map((comment, index) => (
+  return comments.map((comment) => (
     <div>
-      <Comment key={index} data={comment} />
+      <Comment key={comment.id} data={comment} />
       <div className="pl-5 ml-5 border border-l-black">
         <CommentsList comments={comment.reply} />
       </div>
