@@ -25,7 +25,7 @@ const LiveChat = () => {
   }, []);
   return (
     <>
-      <div className="max-h-[540px] overflow-y-scroll flex flex-col-reverse">
+      <div className="border border-black h-[508px] overflow-y-scroll flex flex-col-reverse bg-gray-100 rounded-lg">
         {ChatMessages.map((currentMessage, index) => {
           return (
             <ChatMessage
@@ -46,7 +46,7 @@ const LiveChat = () => {
           }}
         />
         <button
-          className="px-1 ml-2 border border-black bg-green-100"
+          className="px-1 ml-4 border border-black bg-green-100"
           onClick={() => {
             dispatch(addMessage({ name: "Aditya", message: liveMessage }));
             setLiveMessage("");
