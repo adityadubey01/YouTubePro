@@ -4,7 +4,7 @@
    HomePage -
    ![image](https://github.com/adityadubey01/YouTubePro/assets/86652604/71799e16-f2b2-4214-8056-322a901deea1)
 
-   VideoPage -
+   Video and Live Comment Functionality -
    ![image](https://github.com/adityadubey01/YouTubePro/assets/86652604/5d07913a-de99-48eb-bb7e-35bcc8033fdb)
 
    N-Level Nested Comments -
