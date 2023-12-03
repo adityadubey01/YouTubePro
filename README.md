@@ -1,6 +1,5 @@
 # YouTube Pro
-=> Deployed the App using Firebase - [ProjectLink]([url](https://pro-3003c.web.app/)https://pro-3003c.web.app/)
-
+=> Deployed the App using Firebase - [ProjectLink]([url](https://pro-3003c.web.app/))
    HomePage -
    ![image](https://github.com/adityadubey01/YouTubePro/assets/86652604/71799e16-f2b2-4214-8056-322a901deea1)
 
